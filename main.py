@@ -14,6 +14,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
 
+# LOGGING CONFIG
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
 # DATABASE MODELS
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -62,4 +67,4 @@ def get_message(topic):
 # EXECUTE
 if __name__ == '__main__':
     create_database(app)
-    app.run(host='localhost',port=5002,debug=True)
+    app.run(host='127.0.0.1',port=5002,debug=False, threaded=True)
