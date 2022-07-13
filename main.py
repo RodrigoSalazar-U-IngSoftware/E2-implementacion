@@ -42,7 +42,7 @@ def post_message():
         ms = Message(message=message, topic=topic)
         db.session.add(ms)
         db.session.commit()
-    except:
+    except Exception as error:
         return jsonify({
             "status":"fail"
         })
