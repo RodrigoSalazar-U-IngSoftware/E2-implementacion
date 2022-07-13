@@ -2,10 +2,12 @@ from email import message
 from pydoc_data.topics import topics
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
 from os import path
 
 # CONFIG
 DB_NAME = "database.db"
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "UABFPIUFABIBSAKJFBNDSOUY"
@@ -13,6 +15,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
+
+csrf = CSRFProtect()
+csrf.init_app(app) # Compliant
 
 # LOGGING CONFIG
 import logging
