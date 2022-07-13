@@ -2,6 +2,7 @@ from email import message
 from pydoc_data.topics import topics
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import exc
 from flask_wtf.csrf import CSRFProtect
 from os import path
 
@@ -42,7 +43,7 @@ def post_message():
         ms = Message(message=message, topic=topic)
         db.session.add(ms)
         db.session.commit()
-    except Exception as error:
+    except exc.SQLAlchemyError:
         return jsonify({
             "status":"fail"
         })
