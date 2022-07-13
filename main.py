@@ -16,8 +16,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
 
-csrf = CSRFProtect()
-csrf.init_app(app) # Compliant
+#csrf = CSRFProtect()
+#csrf.init_app(app) # Compliant
 
 # LOGGING CONFIG
 import logging
