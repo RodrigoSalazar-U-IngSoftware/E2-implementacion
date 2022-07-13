@@ -70,4 +70,4 @@ def get_message(topic):
 # EXECUTE
 if __name__ == '__main__':
     create_database(app)
-    app.run(host='127.0.0.1',port=5002,debug=False, threaded=True)
+    app.run(host='127.0.0.1',port=5002,debug=False)
